@@ -5,33 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb330e58-981b-400d-a80f-649e97979731" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/PythonProject2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/deps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ingestion/build_index.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ingestion/loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/rag/prompts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/rag/qa_graph.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/rag/vectorstore.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/router_graph.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cui.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/docs/制度示例1_员工年假与请假管理办法.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/docs/制度示例2_IT设备报修与工单处理规范.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/docs/新建 DOCX 文档.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/docs/新建2.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/docs/进程.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helllo/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helllo/js.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helllo/long.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helllo/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helllo/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/helllo/测试.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/route_graph.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/workflows/leave/leave_graph.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/workflows/leave/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/workflows/leave/rules.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/streamlit_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ingestion/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ingestion/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,12 +24,17 @@
       <list>
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="v1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
@@ -74,17 +60,22 @@
     &quot;Python.config.executor&quot;: &quot;Run&quot;,
     &quot;Python.cui.executor&quot;: &quot;Run&quot;,
     &quot;Python.deps.executor&quot;: &quot;Run&quot;,
+    &quot;Python.leave_graph.executor&quot;: &quot;Run&quot;,
     &quot;Python.loader.executor&quot;: &quot;Run&quot;,
     &quot;Python.long.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
     &quot;Python.prompts.executor&quot;: &quot;Run&quot;,
     &quot;Python.qa_graph.executor&quot;: &quot;Run&quot;,
+    &quot;Python.route_graph.executor&quot;: &quot;Run&quot;,
     &quot;Python.router_graph.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rules.executor&quot;: &quot;Run&quot;,
+    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
     &quot;Python.vectorstore.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/cuibaihao/PycharmProjects/PythonProject2/data/docs&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -106,7 +97,7 @@
       <recent name="$PROJECT_DIR$/data/docs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.build_index">
     <configuration name="build_index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject2" />
       <option name="ENV_FILES" value="" />
@@ -178,8 +169,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.build_index" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python.loader" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.loader" />
       </list>
     </recent_temporary>
@@ -212,23 +205,43 @@
       <workItem from="1764636790896" duration="9943000" />
       <workItem from="1764661377121" duration="1323000" />
       <workItem from="1764754553435" duration="1091000" />
+      <workItem from="1764811313290" duration="4358000" />
+      <workItem from="1764820088790" duration="2772000" />
+      <workItem from="1765000802734" duration="3238000" />
+      <workItem from="1765154952791" duration="6202000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PythonProject2$build_index.coverage" NAME="build_index 覆盖结果" MODIFIED="1764645307138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/ingestion" />
-    <SUITE FILE_PATH="coverage/PythonProject2$main.coverage" NAME="main 覆盖结果" MODIFIED="1764755508823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/PythonProject2$deps.coverage" NAME="deps 覆盖结果" MODIFIED="1764645265000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/PythonProject2$loader.coverage" NAME="loader 覆盖结果" MODIFIED="1764645860488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/ingestion" />
+    <SUITE FILE_PATH="coverage/PythonProject2$build_index.coverage" NAME="build_index 覆盖结果" MODIFIED="1765165093355" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/ingestion" />
+    <SUITE FILE_PATH="coverage/PythonProject2$main.coverage" NAME="main 覆盖结果" MODIFIED="1765165114661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/PythonProject2$route_graph.coverage" NAME="route_graph 覆盖结果" MODIFIED="1765165262388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/PythonProject2$loader.coverage" NAME="loader 覆盖结果" MODIFIED="1764815767004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/ingestion" />
+    <SUITE FILE_PATH="coverage/PythonProject2$deps.coverage" NAME="deps 覆盖结果" MODIFIED="1765165945476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/PythonProject2$cui.coverage" NAME="cui 覆盖结果" MODIFIED="1763949829187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject2$prompts.coverage" NAME="prompts 覆盖结果" MODIFIED="1764555755295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/rag" />
     <SUITE FILE_PATH="coverage/PythonProject2$base.coverage" NAME="base 覆盖结果" MODIFIED="1764645280643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.venv/lib/python3.12/site-packages/langchain_core/vectorstores" />
+    <SUITE FILE_PATH="coverage/PythonProject2$leave_graph.coverage" NAME="leave_graph 覆盖结果" MODIFIED="1765165130790" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/workflows/leave" />
     <SUITE FILE_PATH="coverage/PythonProject2$router_graph.coverage" NAME="router_graph 覆盖结果" MODIFIED="1764647016396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/PythonProject2$streamlit_app.coverage" NAME="streamlit_app 覆盖结果" MODIFIED="1764822569474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
+    <SUITE FILE_PATH="coverage/PythonProject2$models.coverage" NAME="models 覆盖结果" MODIFIED="1765165140729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/workflows/leave" />
     <SUITE FILE_PATH="coverage/PythonProject2$long.coverage" NAME="long 覆盖结果" MODIFIED="1764553323232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/helllo" />
     <SUITE FILE_PATH="coverage/PythonProject2$vectorstore.coverage" NAME="vectorstore 覆盖结果" MODIFIED="1764645255521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/rag" />
+    <SUITE FILE_PATH="coverage/PythonProject2$rules.coverage" NAME="rules 覆盖结果" MODIFIED="1765165136727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/workflows/leave" />
     <SUITE FILE_PATH="coverage/PythonProject2$config.coverage" NAME="config 覆盖结果" MODIFIED="1764645260838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/PythonProject2$qa_graph.coverage" NAME="qa_graph 覆盖结果" MODIFIED="1764645300532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/rag" />
   </component>
