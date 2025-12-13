@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="mysql@localhost" uuid="9645a5f2-17e5-4791-a487-18922bad0c7c">
-      <driver-ref>mysql_aurora.aws_wrapper</driver-ref>
+    <data-source source="LOCAL" name="root@localhost" uuid="6fc4cc97-5719-49c9-96bd-a64b038d5b10">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>software.amazon.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:aws-wrapper:mysql://localhost:3306/mysql</jdbc-url>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="hao@localhost [2]" uuid="7a3a7923-b9cf-4473-8625-fad3d9f9b862">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
