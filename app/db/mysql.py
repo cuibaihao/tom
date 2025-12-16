@@ -63,18 +63,12 @@ def get_leave_request(leave_id: str) -> dict | None:
 
 def cancel_leave_request(leave_id: str) -> bool:
     with get_conn() as conn:
-        with conn.cursor() as cur:def get_recent_leave_requests(requester: str, limit: int = 5) -> list[dict]:
-    limit = max(1, min(int(limit), 20))  # 我们查询的时候最多一次查询20条
-    with get_conn() as conn:
         with conn.cursor() as cur:
             cur.execute(
-                "SELECT leave_id, leave_type, start_time, end_time, duration_days, status, reason, created_at "
-                "FROM leave_requests WHERE requester=%s "
-                "ORDER BY id DESC LIMIT %s",
-                (requester, limit),
+                "UPDATE leave_requests SET status='CANCELLED' WHERE leave_id=%s AND status='PENDING'",
+                (leave_id,)
             )
-            return cur.fetchall()
-
+            return cur.rowcount > 0
 
 def update_leave_request(leave_id: str, fields: dict) -> bool:
     """
