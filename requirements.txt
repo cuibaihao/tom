@@ -1,27 +1,28 @@
 booktype
 
-fastapi==0.121.3
-uvicorn[standard]==0.38.0
-pydantic==2.12.4
+fastapi==0.124.4
+uvicorn[standard]>=0.29,<1.0
 python-dotenv>=1.0,<2.0
+pydantic[email]==2.12.5
+python-multipart==0.0.21
+aiofiles==25.1.0
 
-langchain==1.0.8
-langchain-core==1.1.0
+# --- langchain/rag ---
+langchain==1.2.0
+langgraph==1.0.5
 langchain-community==0.4.1
-langchain-openai==1.0.3
-langgraph==1.0.3
-
-langchain-chroma==1.0.0
-chromadb==1.3.5
-
+langchain-openai==1.1.4
+langchain-chroma==1.1.0
+chromadb-client==1.3.6
 tiktoken==0.12.0
-pypdf==6.3.0
+pypdf==6.4.2
 python-docx==1.2.0
 rank-bm25==0.2.2
 
-python-multipart==0.0.20
-aiofiles==24.1.0
-streamlit==1.40.2
-
-pymysql>=1.1.1
+# --- storage ---
+pymysql>=1.1.1,<2.0
 redis==7.1.0
+
+# --- auth ---
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]>=3.3.0,<4.0

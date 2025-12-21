@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb330e58-981b-400d-a80f-649e97979731" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/app/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/rbac.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/security.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/rbac_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/db/auth_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/db/rbac_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/auth_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/rbac_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/perm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/secutiry/rbac/perm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/secutiry/rbac/permission_codes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7a3a7923-b9cf-4473-8625-fad3d9f9b862.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7a3a7923-b9cf-4473-8625-fad3d9f9b862.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/queries/Query_1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/queries/Query_1.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="v5" />
+        <entry key="$PROJECT_DIR$" value="v6.1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,6 +78,7 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;Python.models.executor&quot;: &quot;Run&quot;,
     &quot;Python.mysql.executor&quot;: &quot;Run&quot;,
+    &quot;Python.perm.executor&quot;: &quot;Run&quot;,
     &quot;Python.prompts.executor&quot;: &quot;Run&quot;,
     &quot;Python.qa_graph.executor&quot;: &quot;Run&quot;,
     &quot;Python.redis_session.executor&quot;: &quot;Run&quot;,
@@ -84,7 +92,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v6.1&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v6.2&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/cuibaihao/PycharmProjects/PythonProject2&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -235,6 +243,8 @@
       <workItem from="1765284239941" duration="158000" />
       <workItem from="1765519029535" duration="509000" />
       <workItem from="1765587995810" duration="7124000" />
+      <workItem from="1766018967940" duration="8360000" />
+      <workItem from="1766279916588" duration="6175000" />
     </task>
     <servers />
   </component>
@@ -256,7 +266,7 @@
     <SUITE FILE_PATH="coverage/PythonProject2$main.coverage" NAME="main 覆盖结果" MODIFIED="1765593444698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/PythonProject2$streamlit_app.coverage" NAME="streamlit_app 覆盖结果" MODIFIED="1764822569474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ui" />
     <SUITE FILE_PATH="coverage/PythonProject2$deps.coverage" NAME="deps 覆盖结果" MODIFIED="1765165945476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/PythonProject2$build_index.coverage" NAME="build_index 覆盖结果" MODIFIED="1765846617393" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/ingestion" />
+    <SUITE FILE_PATH="coverage/PythonProject2$build_index.coverage" NAME="build_index 覆盖结果" MODIFIED="1766020473487" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/ingestion" />
     <SUITE FILE_PATH="coverage/PythonProject2$loader.coverage" NAME="loader 覆盖结果" MODIFIED="1764815767004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/ingestion" />
     <SUITE FILE_PATH="coverage/PythonProject2$long.coverage" NAME="long 覆盖结果" MODIFIED="1764553323232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/helllo" />
     <SUITE FILE_PATH="coverage/PythonProject2$security.coverage" NAME="security 覆盖结果" MODIFIED="1765854141690" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
@@ -274,5 +284,6 @@
     <SUITE FILE_PATH="coverage/PythonProject2$config.coverage" NAME="config 覆盖结果" MODIFIED="1764645260838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/PythonProject2$qa_graph.coverage" NAME="qa_graph 覆盖结果" MODIFIED="1764645300532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/rag" />
     <SUITE FILE_PATH="coverage/PythonProject2$mysql.coverage" NAME="mysql 覆盖结果" MODIFIED="1765846625183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/db" />
+    <SUITE FILE_PATH="coverage/PythonProject2$perm.coverage" NAME="perm 覆盖结果" MODIFIED="1766020479960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
 </project>

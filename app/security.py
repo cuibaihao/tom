@@ -6,10 +6,9 @@ from jose import jwt
 from passlib.context import CryptContext
 
 PWD_CONTEXT = CryptContext(
-    schemes=["bcrypt_sha256"],
+    schemes=["pbkdf2_sha256"],
     deprecated="auto",
 )
-
 JWT_SECRET = os.getenv("JWT_SECRET", "dev-only-change-me")
 JWT_ALG = os.getenv("JWT_ALG", "HS256")
 JWT_EXPIRE_MINUTES = int(os.getenv("JWT_EXPIRE_MINUTES", "120"))

@@ -7,6 +7,8 @@ from fastapi import APIRouter, Depends, HTTPException, Header, status
 from pydantic import BaseModel, EmailStr
 
 from app.db.mysql import get_conn
+from app.db.auth_db import get_user_by_username, create_user, update_last_login
+from app.model.auth_model import UserInDB, RegisterReq, TokenResp, LoginReq
 from app.security import hash_password, verify_password, create_access_token, decode_token
 
 router = APIRouter(prefix="/auth", tags=["auth"])

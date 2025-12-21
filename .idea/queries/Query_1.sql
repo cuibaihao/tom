@@ -1,3 +1,4 @@
+use enterprise_kb;
 CREATE TABLE IF NOT EXISTS roles (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '角色主键ID',
   code VARCHAR(64) NOT NULL COMMENT '角色编码，例如admin/hr/it/public',
