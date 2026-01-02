@@ -1,6 +1,14 @@
+import uvicorn
 
-from fastapi import Request
-from fastapi import FastAPI, UploadFile, File, Form, HTTPException
+from app.api.auth_api import get_current_user
+from app.db import kb_db
+from app.model.auth_model import UserInDB
+from app.secutiry.rbac.perm import check_permission
+from app.api.kb_api import router as kb_router
+from app.api.auth_api import router as auth_router
+
+
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Depends
 from pydantic import BaseModel
 from app.router_graph import router_graph
 from app.deps import get_vs, get_embeddings
@@ -15,9 +23,99 @@ import chromadb
 
 
 app = FastAPI(title="Enterprise KB Assistant")
+
+app.include_router(kb_router)
+app.include_router(auth_router)
+
 DATA_DOCS_DIR = Path("./data/docs")
 SESSIONS: dict[str, dict] = {}
 DATA_DOCS_DIR.mkdir(parents=True, exist_ok=True)
+
+@app.post("/ingest")
+async def ingest(
+    file: UploadFile = File(...),
+    visibility: str = Form("public"),
+    doc_id: Optional[str] = Form(None),
+    overwrite: bool = Form(False),
+    current_user: UserInDB = Depends(get_current_user),
+):
+    check_permission(current_user, "kb.manage_docs")
+
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="Empty filename")
+
+    visibility = (visibility or "public").strip().lower()
+    doc_id = (doc_id or f"doc-{uuid.uuid4().hex[:12]}").strip()
+
+    existed = kb_db.get_kb_document(doc_id)
+    if existed and not overwrite:
+        raise HTTPException(status_code=409, detail=f"doc_id already exists: {doc_id}")
+
+    if existed and overwrite:
+        from app.rag.chroma_admin import delete_by_doc_id
+
+        try:
+            delete_by_doc_id(doc_id)
+        except Exception:
+            pass
+
+    suffix = Path(file.filename).suffix
+    safe_name = f"{int(time.time())}_{uuid.uuid4().hex}{suffix}"
+    save_path = DATA_DOCS_DIR / safe_name
+
+    content = await file.read()
+    if not content:
+        raise HTTPException(status_code=400, detail="Empty file")
+    save_path.write_bytes(content)
+
+    docs = load_single_file(save_path)
+    if not docs:
+        raise HTTPException(status_code=400, detail=f"Unsupported or empty file type: {suffix}")
+
+    extra_meta = {
+        "original_filename": file.filename,
+        "stored_path": str(save_path),
+        "uploader_user_id": current_user.id,
+        "uploader_username": current_user.username,
+        "uploaded_at": int(time.time()),
+    }
+
+    chunks = split_with_visibility(docs, visibility=visibility, doc_id=doc_id, extra_meta=extra_meta)
+
+    vs = get_vs()
+    vs.add_documents(chunks)
+    try:
+        vs.persist()
+    except Exception:
+        pass
+
+    try:
+        from app.rag.chroma_admin import count_by_doc_id
+
+        chroma_cnt = count_by_doc_id(doc_id)
+    except Exception:
+        chroma_cnt = len(chunks)
+
+    try:
+        kb_db.upsert_kb_document(
+            doc_id=doc_id,
+            original_filename=file.filename,
+            stored_path=str(save_path),
+            visibility=visibility,
+            uploader_user_id=current_user.id,
+            uploader_username=current_user.username,
+            chunk_count=chroma_cnt,
+        )
+    except Exception:
+        pass
+
+    return {
+        "saved_as": str(save_path),
+        "visibility": visibility,
+        "doc_id": doc_id,
+        "chunks": chroma_cnt,
+        "overwrote": bool(existed and overwrite),
+    }
 
 
 class ChatReq(BaseModel):
@@ -125,3 +223,7 @@ def reindex(visibility_default: str = Form("public")):
 @app.get("/")
 def root():
     return {"status": "ok", "docs": "/docs"}
+
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="127.0.0.1", port=8002, reload=True)

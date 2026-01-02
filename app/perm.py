@@ -1,3 +1,9 @@
+from app.db.rbac_db import get_user_permissions
+from app.model.auth_model import UserInDB
+
+from typing import Iterable
+from fastapi import HTTPException, status
+
 # ----------------helper-----------------
 def _resolve_perms(*,
                    user: UserInDB | None = None,
