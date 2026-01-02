@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb330e58-981b-400d-a80f-649e97979731" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/app/api/rbac_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/db/auth_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/db/rbac_db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/model/auth_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/model/rbac_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/perm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/secutiry/rbac/perm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/secutiry/rbac/permission_codes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7a3a7923-b9cf-4473-8625-fad3d9f9b862.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7a3a7923-b9cf-4473-8625-fad3d9f9b862.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/queries/Query_1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/queries/Query_1.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/security.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="cb330e58-981b-400d-a80f-649e97979731" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,10 +20,21 @@
       </list>
     </option>
   </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform)); sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo, NoAppException&#10;for module in [&quot;main.py&quot;, &quot;wsgi.py&quot;, &quot;app.py&quot;]:&#10;    try: locals().update(ScriptInfo(app_import_path=module, create_app=None).load_app().make_shell_context()); print(&quot;\nFlask App: %s&quot; % app.import_name); break&#10;    except NoAppException: pass" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="v6.1" />
+        <entry key="$PROJECT_DIR$" value="v6.3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
