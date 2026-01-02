@@ -6,7 +6,7 @@ from pydantic import BaseModel, EmailStr
 class RegisterReq(BaseModel):
     username: str
     password: str
-    email: Optional[EmailStr] = Nonefrom typing import Optional
+    email: Optional[EmailStr] = None
 
 from pydantic import BaseModel, EmailStr
 

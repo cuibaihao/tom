@@ -1,0 +1,104 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c405ca9e-a7f0-4a78-9f97-16ca0645559f\" name=\"更改\" comment=\"\">\n      <change afterPath=\"$PROJECT_DIR$/app/audio/asr.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/audio/audio_loader.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/audio/segmenter.py\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/app/model/audio_model.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/app/config.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/config.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/app/deps.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/deps.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/app/rag/vectorstore.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app/rag/vectorstore.py\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/requirements.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/requirements.txt\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"v6.4\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 0\n}</component>\n  <component name=\"ProjectId\" id=\"37e4YAtN5GUzhGBxfo4WjGq2G9l\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"Python.asr.executor\": \"Run\",\n    \"Python.audio_loader.executor\": \"Run\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"RunOnceActivity.typescript.service.memoryLimit.init\": \"true\",\n    \"git-widget-placeholder\": \"v8.0\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RunAnythingCache\">\n    <option name=\"myCommands\">\n      <command value=\"vectorystore\" />\n    </option>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.29346.142\" />\n        <option value=\"bundled-python-sdk-f2b7a9f6281b-6e1f45a539f7-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.29346.142\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"默认任务\">\n      <changelist id=\"c405ca9e-a7f0-4a78-9f97-16ca0645559f\" name=\"更改\" comment=\"\" />\n      <created>1767250262239</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1767250262239</updated>\n      <workItem from=\"1767250286124\" duration=\"4659000\" />\n      <workItem from=\"1767333594254\" duration=\"1190000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"coverage/PythonProject2$audio_loader.coverage\" NAME=\"audio_loader 覆盖结果\" MODIFIED=\"1767254080506\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/app/audio\" />\n    <SUITE FILE_PATH=\"coverage/PythonProject2$asr.coverage\" NAME=\"asr 覆盖结果\" MODIFIED=\"1767333852732\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"coverage.py\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" WORKING_DIRECTORY=\"$PROJECT_DIR$/app/audio\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a3e305cee7c09b66a74f827c694ab3e001ffbdb1)
++++ b/.idea/workspace.xml	(date 1767336154237)
+@@ -4,18 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="c405ca9e-a7f0-4a78-9f97-16ca0645559f" name="更改" comment="">
+-      <change afterPath="$PROJECT_DIR$/app/audio/asr.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/audio/audio_loader.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/audio/segmenter.py" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/app/model/audio_model.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/deps.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/deps.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app/rag/vectorstore.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/rag/vectorstore.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+-    </list>
++    <list default="true" id="c405ca9e-a7f0-4a78-9f97-16ca0645559f" name="更改" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -31,7 +20,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="v6.4" />
++        <entry key="$PROJECT_DIR$" value="v8.0" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -53,7 +42,7 @@
+     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+     "RunOnceActivity.git.unshallow": "true",
+     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+-    "git-widget-placeholder": "v8.0",
++    "git-widget-placeholder": "v8.1",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+@@ -84,6 +73,7 @@
+       <updated>1767250262239</updated>
+       <workItem from="1767250286124" duration="4659000" />
+       <workItem from="1767333594254" duration="1190000" />
++      <workItem from="1767335515210" duration="638000" />
+     </task>
+     <servers />
+   </component>
+Index: app/audio/clip.py
+===================================================================
+diff --git a/app/audio/clip.py b/app/audio/clip.py
+new file mode 100644
+--- /dev/null	(date 1767336276097)
++++ b/app/audio/clip.py	(date 1767336276097)
+@@ -0,0 +1,39 @@
++from __future__ import annotations
++
++import subprocess
++from pathlib import Path
++
++def ensure_dir(p: Path) -> None:
++    p.mkdir(parents=True, exist_ok=True)
++
++def clip_audio_to_mp3(
++    src_path: Path,
++    dst_path: Path,
++    start_ms: int,
++    end_ms: int,
++    sample_rate: int = 16000,
++    channels: int = 1,
++    bitrate: str = "96k",
++) -> None:
++    ensure_dir(dst_path.parent)
++
++    start_s = max(0.0, float(start_ms) / 1000.0)
++    end_s = max(0.0, float(end_ms) / 1000.0)
++    if end_s <= start_s:
++        raise ValueError("end_ms must be greater than start_ms")
++
++    cmd = [
++        "/Users/peter/Downloads/ffmpeg",
++        "-y",
++        "-ss", f"{start_s:.3f}",
++        "-to", f"{end_s:.3f}",
++        "-i", str(src_path),
++        "-vn",
++        "-ar", str(sample_rate),
++        "-ac", str(channels),
++        "-c:a", "libmp3lame",
++        "-b:a", bitrate,
++        str(dst_path),
++    ]
++    subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
++
+diff --git a/app/db/audio_db.py b/app/db/audio_db.py
+new file mode 100644
