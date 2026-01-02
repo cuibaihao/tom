@@ -4,7 +4,7 @@ from app.api.auth_api import get_current_user
 from app.db import kb_db
 from app.model.auth_model import UserInDB
 from app.secutiry.rbac.perm import check_permission
-from app.api.kb_api import router as kb_router
+from app.api.kb_api import router as kb_router, normalize_visibility
 from app.api.auth_api import router as auth_router
 
 
@@ -37,6 +37,7 @@ async def ingest(
     visibility: str = Form("public"),
     doc_id: Optional[str] = Form(None),
     overwrite: bool = Form(False),
+    delete_old_file: bool = Form(False),
     current_user: UserInDB = Depends(get_current_user),
 ):
     check_permission(current_user, "kb.manage_docs")
@@ -44,21 +45,17 @@ async def ingest(
     if not file.filename:
         raise HTTPException(status_code=400, detail="Empty filename")
 
-    visibility = (visibility or "public").strip().lower()
+    visibility = normalize_visibility(visibility or "public")
+
     doc_id = (doc_id or f"doc-{uuid.uuid4().hex[:12]}").strip()
 
     existed = kb_db.get_kb_document(doc_id)
     if existed and not overwrite:
         raise HTTPException(status_code=409, detail=f"doc_id already exists: {doc_id}")
 
-    if existed and overwrite:
-        from app.rag.chroma_admin import delete_by_doc_id
+    old_path = existed["stored_path"] if existed else None
 
-        try:
-            delete_by_doc_id(doc_id)
-        except Exception:
-            pass
-
+    # 1) 先把新文件保存下来
     suffix = Path(file.filename).suffix
     safe_name = f"{int(time.time())}_{uuid.uuid4().hex}{suffix}"
     save_path = DATA_DOCS_DIR / safe_name
@@ -68,6 +65,7 @@ async def ingest(
         raise HTTPException(status_code=400, detail="Empty file")
     save_path.write_bytes(content)
 
+    # 2) 先解析新文件、切分出 chunks（确保新文件 OK）
     docs = load_single_file(save_path)
     if not docs:
         raise HTTPException(status_code=400, detail=f"Unsupported or empty file type: {suffix}")
@@ -79,9 +77,14 @@ async def ingest(
         "uploader_username": current_user.username,
         "uploaded_at": int(time.time()),
     }
-
     chunks = split_with_visibility(docs, visibility=visibility, doc_id=doc_id, extra_meta=extra_meta)
 
+    # 3) 如果 overwrite：现在再删旧的 chroma chunks（此时新 chunks 已经准备好）
+    if existed and overwrite:
+        from app.rag.chroma_admin import delete_by_doc_id
+        delete_by_doc_id(doc_id)
+
+    # 4) 写入向量库
     vs = get_vs()
     vs.add_documents(chunks)
     try:
@@ -89,25 +92,30 @@ async def ingest(
     except Exception:
         pass
 
-    try:
-        from app.rag.chroma_admin import count_by_doc_id
+    # 5) 更新注册表
+    from app.rag.chroma_admin import count_by_doc_id
+    chroma_cnt = count_by_doc_id(doc_id)
 
-        chroma_cnt = count_by_doc_id(doc_id)
-    except Exception:
-        chroma_cnt = len(chunks)
+    kb_db.upsert_kb_document(
+        doc_id=doc_id,
+        original_filename=file.filename,
+        stored_path=str(save_path),
+        visibility=visibility,
+        uploader_user_id=current_user.id,
+        uploader_username=current_user.username,
+        chunk_count=chroma_cnt,
+    )
 
-    try:
-        kb_db.upsert_kb_document(
-            doc_id=doc_id,
-            original_filename=file.filename,
-            stored_path=str(save_path),
-            visibility=visibility,
-            uploader_user_id=current_user.id,
-            uploader_username=current_user.username,
-            chunk_count=chroma_cnt,
-        )
-    except Exception:
-        pass
+    # 6) overwrite 时可选删除旧文件（最后一步做）
+    deleted_old_file = False
+    if delete_old_file and old_path and old_path != str(save_path):
+        try:
+            p = Path(old_path)
+            if p.exists() and p.is_file():
+                p.unlink()
+                deleted_old_file = True
+        except Exception:
+            deleted_old_file = False
 
     return {
         "saved_as": str(save_path),
@@ -115,7 +123,9 @@ async def ingest(
         "doc_id": doc_id,
         "chunks": chroma_cnt,
         "overwrote": bool(existed and overwrite),
+        "deleted_old_file": deleted_old_file,
     }
+
 
 
 class ChatReq(BaseModel):
@@ -161,14 +171,29 @@ def chat(req: ChatReq):
 
 
 @app.post("/ingest")
-async def ingest(file: UploadFile = File(...),
-                 visibility: str = Form("public"),
-                 doc_id: Optional[str] = Form(None)):
+async def ingest(
+    file: UploadFile = File(...),
+    visibility: str = Form("public"),
+    doc_id: Optional[str] = Form(None),
+    overwrite: bool = Form(False),
+    delete_old_file: bool = Form(False),
+    current_user: UserInDB = Depends(get_current_user),
+):
+    check_permission(current_user, "kb.manage_docs")
+
     if not file.filename:
         raise HTTPException(status_code=400, detail="Empty filename")
 
     visibility = (visibility or "public").strip().lower()
+    doc_id = (doc_id or f"doc-{uuid.uuid4().hex[:12]}").strip()
 
+    existed = kb_db.get_kb_document(doc_id)
+    if existed and not overwrite:
+        raise HTTPException(status_code=409, detail=f"doc_id already exists: {doc_id}")
+
+    old_path = existed["stored_path"] if existed else None
+
+    # 1) 先把新文件保存下来
     suffix = Path(file.filename).suffix
     safe_name = f"{int(time.time())}_{uuid.uuid4().hex}{suffix}"
     save_path = DATA_DOCS_DIR / safe_name
@@ -178,20 +203,65 @@ async def ingest(file: UploadFile = File(...),
         raise HTTPException(status_code=400, detail="Empty file")
     save_path.write_bytes(content)
 
+    # 2) 先解析新文件、切分出 chunks（确保新文件 OK）
     docs = load_single_file(save_path)
     if not docs:
         raise HTTPException(status_code=400, detail=f"Unsupported or empty file type: {suffix}")
 
-    chunks = split_with_visibility(docs, visibility=visibility, doc_id=doc_id)
+    extra_meta = {
+        "original_filename": file.filename,
+        "stored_path": str(save_path),
+        "uploader_user_id": current_user.id,
+        "uploader_username": current_user.username,
+        "uploaded_at": int(time.time()),
+    }
+    chunks = split_with_visibility(docs, visibility=visibility, doc_id=doc_id, extra_meta=extra_meta)
 
+    # 3) 如果 overwrite：现在再删旧的 chroma chunks（此时新 chunks 已经准备好）
+    if existed and overwrite:
+        from app.rag.chroma_admin import delete_by_doc_id
+        delete_by_doc_id(doc_id)
+
+    # 4) 写入向量库
     vs = get_vs()
     vs.add_documents(chunks)
+    try:
+        vs.persist()
+    except Exception:
+        pass
+
+    # 5) 更新注册表
+    from app.rag.chroma_admin import count_by_doc_id
+    chroma_cnt = count_by_doc_id(doc_id)
+
+    kb_db.upsert_kb_document(
+        doc_id=doc_id,
+        original_filename=file.filename,
+        stored_path=str(save_path),
+        visibility=visibility,
+        uploader_user_id=current_user.id,
+        uploader_username=current_user.username,
+        chunk_count=chroma_cnt,
+    )
+
+    # 6) overwrite 时可选删除旧文件（最后一步做）
+    deleted_old_file = False
+    if delete_old_file and old_path and old_path != str(save_path):
+        try:
+            p = Path(old_path)
+            if p.exists() and p.is_file():
+                p.unlink()
+                deleted_old_file = True
+        except Exception:
+            deleted_old_file = False
 
     return {
         "saved_as": str(save_path),
         "visibility": visibility,
         "doc_id": doc_id,
-        "chunks": len(chunks),
+        "chunks": chroma_cnt,
+        "overwrote": bool(existed and overwrite),
+        "deleted_old_file": deleted_old_file,
     }
 
 @app.post("/reindex")

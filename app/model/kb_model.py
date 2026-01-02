@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, Field
 
 
@@ -31,3 +31,8 @@ class KBDocReembedResp(BaseModel):
     new_chunks: int
     visibility: str
 
+class KBDocPageResp(BaseModel):
+    total: int
+    limit: int
+    offset: int
+    items: List[KBDocListItem]
