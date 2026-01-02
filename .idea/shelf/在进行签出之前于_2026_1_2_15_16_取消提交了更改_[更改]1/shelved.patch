@@ -1,0 +1,36 @@
+Index: app/model/auth_model.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/model/auth_model.py b/app/model/auth_model.py
+--- a/app/model/auth_model.py	(revision a3e305cee7c09b66a74f827c694ab3e001ffbdb1)
++++ b/app/model/auth_model.py	(date 1767338019034)
+@@ -1,0 +1,26 @@
++from pydantic import BaseModel, EmailStr
++from typing import Optional
++
++class RegisterReq(BaseModel):
++    username: str
++    password: str
++    email: Optional[EmailStr] = None
++    phone: Optional[str] = None
++    full_name: Optional[str] = None
++
++class LoginReq(BaseModel):
++    username: str
++    password: str
++
++class TokenResp(BaseModel):
++    access_token: str
++    token_type: str = "bearer"
++
++class UserInDB(BaseModel):
++    id: int
++    username: str
++    email: Optional[str] = None
++    phone: Optional[str] = None
++    full_name: Optional[str] = None
++    is_active: bool
++    is_super_admin: bool
+\ No newline at end of file

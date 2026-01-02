@@ -1,0 +1,39 @@
+Index: app/api/auth_api.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from __future__ import annotations\n\nfrom datetime import datetime\nfrom typing import Optional\n\nfrom fastapi import APIRouter, Depends, HTTPException, Header, status\nfrom pydantic import BaseModel, EmailStr\n\nfrom app.db.mysql import get_conn\nfrom app.db.auth_db import get_user_by_username, create_user, update_last_login\nfrom app.model.auth_model import UserInDB, RegisterReq, TokenResp, LoginReq\nfrom app.security import hash_password, verify_password, create_access_token, decode_token\n\nrouter = APIRouter(prefix=\"/auth\", tags=[\"auth\"])\n\nclass RegisterReq(BaseModel):\n    username: str\n    password: str\n    email: Optional[EmailStr] = None\n    phone: Optional[str] = None\n    full_name: Optional[str] = None\n\nclass LoginReq(BaseModel):\n    username: str\n    password: str\n\nclass TokenResp(BaseModel):\n    access_token: str\n    token_type: str = \"bearer\"\n\nclass UserInDB(BaseModel):\n    id: int\n    username: str\n    email: Optional[str] = None\n    phone: Optional[str] = None\n    full_name: Optional[str] = None\n    is_active: bool\n    is_super_admin: bool\n\n\n# ---------------- DB helpers ----------------\n\ndef get_user_by_username(username: str) -> dict | None:\n    sql = \"SELECT * FROM users WHERE username=%s LIMIT 1\"\n    with get_conn() as conn:\n        with conn.cursor() as cur:\n            cur.execute(sql, (username,))\n            return cur.fetchone()\n\ndef create_user(data: RegisterReq) -> dict:\n    pwd_hash = hash_password(data.password)\n    sql = \"\"\"\n        INSERT INTO users (username, email, phone, password_hash, full_name, is_active, is_super_admin)\n        VALUES (%s,%s,%s,%s,%s,1,0)\n    \"\"\"\n    with get_conn() as conn:\n        with conn.cursor() as cur:\n            cur.execute(sql, (data.username, data.email, data.phone, pwd_hash, data.full_name))\n            user_id = cur.lastrowid\n\n    # 默认给 public 角色\n    sql_bind = \"\"\"\n        INSERT IGNORE INTO user_roles (user_id, role_id)\n        SELECT %s, r.id FROM roles r WHERE r.code='public'\n    \"\"\"\n    with get_conn() as conn:\n        with conn.cursor() as cur:\n            cur.execute(sql_bind, (user_id,))\n\n    u = get_user_by_username(data.username)\n    assert u is not None\n    return u\n\ndef update_last_login(user_id: int):\n    with get_conn() as conn:\n        with conn.cursor() as cur:\n            cur.execute(\"UPDATE users SET last_login_at=%s WHERE id=%s\", (datetime.now(), user_id))\n\n\n# ---------------- Dependencies ----------------\n\ndef get_current_user(authorization: str | None = Header(default=None)) -> UserInDB:\n    if not authorization or not authorization.lower().startswith(\"bearer \"):\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"Missing Bearer token\")\n\n    token = authorization.split(\" \", 1)[1].strip()\n    try:\n        payload = decode_token(token)\n    except Exception:\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"Invalid token\")\n\n    username = payload.get(\"sub\")\n    if not username:\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"Invalid token payload\")\n\n    u = get_user_by_username(username)\n    if not u or not u.get(\"is_active\"):\n        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=\"User not found or disabled\")\n\n    return UserInDB(\n        id=int(u[\"id\"]),\n        username=u[\"username\"],\n        email=u.get(\"email\"),\n        phone=u.get(\"phone\"),\n        full_name=u.get(\"full_name\"),\n        is_active=bool(u[\"is_active\"]),\n        is_super_admin=bool(u[\"is_super_admin\"]),\n    )\n\ndef get_current_user_optional(authorization: str | None = Header(default=None)) -> UserInDB | None:\n    if not authorization:\n        return None\n    if not authorization.lower().startswith(\"bearer \"):\n        return None\n    try:\n        return get_current_user(authorization=authorization)\n    except HTTPException:\n        return None\n\n# ---------------- Routes ----------------\n\n@router.post(\"/register\", response_model=UserInDB)\ndef register(req: RegisterReq):\n    if get_user_by_username(req.username):\n        raise HTTPException(status_code=400, detail=\"username already exists\")\n    u = create_user(req)\n    return UserInDB(\n        id=int(u[\"id\"]),\n        username=u[\"username\"],\n        email=u.get(\"email\"),\n        phone=u.get(\"phone\"),\n        full_name=u.get(\"full_name\"),\n        is_active=bool(u[\"is_active\"]),\n        is_super_admin=bool(u[\"is_super_admin\"]),\n    )\n\n@router.post(\"/login\", response_model=TokenResp)\ndef login(req: LoginReq):\n    u = get_user_by_username(req.username)\n    if not u:\n        raise HTTPException(status_code=401, detail=\"bad credentials\")\n\n    if not verify_password(req.password, u[\"password_hash\"]):\n        raise HTTPException(status_code=401, detail=\"bad credentials\")\n\n    if not u.get(\"is_active\"):\n        raise HTTPException(status_code=403, detail=\"user disabled\")\n\n    update_last_login(int(u[\"id\"]))\n    token = create_access_token({\"sub\": u[\"username\"], \"uid\": int(u[\"id\"])})\n    return TokenResp(access_token=token)\n\n@router.get(\"/me\", response_model=UserInDB)\ndef me(current_user: UserInDB = Depends(get_current_user)):\n    return current_user\n
+===================================================================
+diff --git a/app/api/auth_api.py b/app/api/auth_api.py
+--- a/app/api/auth_api.py	(revision a3e305cee7c09b66a74f827c694ab3e001ffbdb1)
++++ b/app/api/auth_api.py	(date 1767338019047)
+@@ -13,30 +13,6 @@
+ 
+ router = APIRouter(prefix="/auth", tags=["auth"])
+ 
+-class RegisterReq(BaseModel):
+-    username: str
+-    password: str
+-    email: Optional[EmailStr] = None
+-    phone: Optional[str] = None
+-    full_name: Optional[str] = None
+-
+-class LoginReq(BaseModel):
+-    username: str
+-    password: str
+-
+-class TokenResp(BaseModel):
+-    access_token: str
+-    token_type: str = "bearer"
+-
+-class UserInDB(BaseModel):
+-    id: int
+-    username: str
+-    email: Optional[str] = None
+-    phone: Optional[str] = None
+-    full_name: Optional[str] = None
+-    is_active: bool
+-    is_super_admin: bool
+-
+ 
+ # ---------------- DB helpers ----------------
+ 
