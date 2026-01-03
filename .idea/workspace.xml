@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb330e58-981b-400d-a80f-649e97979731" name="更改" comment="初始创建V6.3">
+      <change afterPath="$PROJECT_DIR$/app/audio/asr.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/audio/audio_loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/audio/clip.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/audio/segmenter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/db/audio_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/model/audio_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/kb_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/kb_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/db/kb_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/db/kb_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/kb_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/kb_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/deps.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/deps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/rag/vectorstore.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/rag/vectorstore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="v6.3" />
+        <entry key="$PROJECT_DIR$" value="v6.4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,59 +79,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript 调试.html.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript 调试.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript 调试.测试.html.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.base.executor&quot;: &quot;Run&quot;,
-    &quot;Python.build_index.executor&quot;: &quot;Run&quot;,
-    &quot;Python.config.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cui.executor&quot;: &quot;Run&quot;,
-    &quot;Python.deps.executor&quot;: &quot;Run&quot;,
-    &quot;Python.leave_graph.executor&quot;: &quot;Run&quot;,
-    &quot;Python.loader.executor&quot;: &quot;Run&quot;,
-    &quot;Python.long.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.models.executor&quot;: &quot;Run&quot;,
-    &quot;Python.mysql.executor&quot;: &quot;Run&quot;,
-    &quot;Python.perm.executor&quot;: &quot;Run&quot;,
-    &quot;Python.prompts.executor&quot;: &quot;Run&quot;,
-    &quot;Python.qa_graph.executor&quot;: &quot;Run&quot;,
-    &quot;Python.redis_session.executor&quot;: &quot;Run&quot;,
-    &quot;Python.route_graph.executor&quot;: &quot;Run&quot;,
-    &quot;Python.router_graph.executor&quot;: &quot;Run&quot;,
-    &quot;Python.rules.executor&quot;: &quot;Run&quot;,
-    &quot;Python.security.executor&quot;: &quot;Run&quot;,
-    &quot;Python.streamlit_app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.vectorstore.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;v6.4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/cuibaihao/PycharmProjects/PythonProject2&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript 调试.html.html.executor": "Run",
+    "JavaScript 调试.index.html.executor": "Run",
+    "JavaScript 调试.测试.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.auth.executor": "Run",
+    "Python.base.executor": "Run",
+    "Python.build_index.executor": "Run",
+    "Python.config.executor": "Run",
+    "Python.cui.executor": "Run",
+    "Python.deps.executor": "Run",
+    "Python.leave_graph.executor": "Run",
+    "Python.loader.executor": "Run",
+    "Python.long.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.models.executor": "Run",
+    "Python.mysql.executor": "Run",
+    "Python.perm.executor": "Run",
+    "Python.prompts.executor": "Run",
+    "Python.qa_graph.executor": "Run",
+    "Python.redis_session.executor": "Run",
+    "Python.route_graph.executor": "Run",
+    "Python.router_graph.executor": "Run",
+    "Python.rules.executor": "Run",
+    "Python.security.executor": "Run",
+    "Python.streamlit_app.executor": "Run",
+    "Python.vectorstore.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "v8.0",
+    "last_opened_file_path": "/home/cuibaihao/PycharmProjects/PythonProject2",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;redis&quot;,
-      &quot;mysql&quot;,
-      &quot;mysql_aurora&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "redis",
+      "mysql",
+      "mysql_aurora"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -269,6 +275,7 @@
       <workItem from="1767343228302" duration="806000" />
       <workItem from="1767344067939" duration="313000" />
       <workItem from="1767344600381" duration="2093000" />
+      <workItem from="1767430984747" duration="1584000" />
     </task>
     <task id="LOCAL-00001" summary="初始创建V6.3">
       <option name="closed" value="true" />
@@ -300,17 +307,6 @@
     <MESSAGE value="项目初建" />
     <MESSAGE value="初始创建V6.3" />
     <option name="LAST_COMMIT_MESSAGE" value="初始创建V6.3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/db/kb_db.py</url>
-          <line>6</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProject2$main.coverage" NAME="main 覆盖结果" MODIFIED="1767343954812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />

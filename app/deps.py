@@ -1,7 +1,7 @@
 from langchain_community.embeddings import ZhipuAIEmbeddings
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from app.config import settings
-from app.rag.vectorstore import get_vectorstore
+from app.rag.vectorstore import get_vectorstore, get_audio_vectorstore
 from zhipuai import ZhipuAI
 
 def get_llm():
@@ -29,6 +29,10 @@ def get_embeddings():
 
 def get_vs():
     return get_vectorstore(get_embeddings())
+
+def get_audio_vs():
+    return get_audio_vectorstore(get_embeddings())
+
 
 if __name__ == "__main__":
 

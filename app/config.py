@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 
 class Settings(BaseModel):
@@ -17,3 +18,6 @@ class Settings(BaseModel):
     chunk_overlap: int = int(os.getenv("CHUNK_OVERLAP", "120"))
 
 settings = Settings()
+
+audio_collection_name:str = os.getenv("AUDIO_COLLECTION_NAME", "audio_base")
+
