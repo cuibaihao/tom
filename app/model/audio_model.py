@@ -34,6 +34,7 @@ class AudioSearchHit(BaseModel):
     end_ms: int
     text: str
     score: Optional[float] = None  # 向量库有些返回不了score就留空
+    clip_url: Optional[str] = None
 
 
 class AudioSearchResp(BaseModel):
