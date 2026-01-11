@@ -10,6 +10,8 @@ from app.db import audio_db
 from app.db import audio_job_db
 from app.audio.pipeline import run_audio_ingest_pipeline
 from app.rag.chroma_admin import delete_by_audio_id
+from app.celery_app import celery_app
+
 
 
 def _check_cancel(job_id: str):
@@ -18,12 +20,15 @@ def _check_cancel(job_id: str):
         raise Ignore()
 
 
-@celery_app.celery_app.task(
-    bind=True,
-    autoretry_for=(Exception,),
-    retry_backoff=True,
-    retry_jitter=True,
-    retry_kwargs={"max_retries": 3},)
+@celery_app.task(
+    name="app.tasks.audio_tasks.audio_ingest_task",  # ⚠️主要加这里
+    # 这个name不要乱写，celery一般有约定，这个名字应该是模块名.函数名，所以audio_ingest_task是下面def的函数名
+    bind=True,  # 将这个任务绑定在selery中，对下面函数的第一个参数self有帮助，可以将celery本身注入到self中，方便在任务中访问celery
+    autoretry_for=(Exception,),  # 只要出现异常都会触发自动重试
+    retry_backoff=True,  # 重试的时候间隔变长
+    retry_jitter=True,   # 添加一个重试的时间抖动，
+    retry_kwargs={"max_retries": 3},)   # 自动重试的次数 # ⚠️注意装饰器和下面的函数不要有空行
+
 def audio_ingest_task(self, job_id: str, audio_id: str):
     flags = audio_job_db.get_job_flags(job_id)
     old_path = flags.get("old_stored_path")

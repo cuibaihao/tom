@@ -43,3 +43,17 @@ def has_permission(*,
     # 判断perm_code是不是在user_id所拥有的perms里面，即检验是否有权限
     resolved = _resolve_perms(user_id=user_id, perms=perms)
     return perm_code in resolved
+
+def allowed_kb_visibilities(perms: Iterable[str] | None) -> list[str]:
+    """
+    根据 perms 解析知识库的可见性范围
+
+    :param perms: 权限的集合/列表
+    :return: 允许访问的知识库范围
+    """
+
+    p = set(perms or [])
+    allowed = ["public"]
+    if "kb.view_internal" in p or "kb.manage_docs" in p:
+        allowed.append("internal")
+    return allowed
