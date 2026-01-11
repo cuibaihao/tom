@@ -52,7 +52,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/.cache/JetBrains/PyCharm2025.2/python_stubs/791930516/builtins.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../.cache/JetBrains/PyCharm2025.2/python_stubs/791930516/builtins.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.venv/lib/python3.12/site-packages/langchain_core/vectorstores/base.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/zzz.html" root0="FORCE_HIGHLIGHTING" />
   </component>
